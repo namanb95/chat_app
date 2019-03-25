@@ -1,0 +1,38 @@
+@import "../../../assets/scss/variables/main.variable.scss";
+
+$toogle-button-W-H: 35px;
+
+.screenLayout {
+  height: 100%;
+  margin-left: 25px;
+  background: grey;
+  position: relative;
+
+  .leftPanel {
+    position: absolute;
+    background: gray;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: $sideBarUserListWidth;
+  }
+  .rightPanel {
+    transition: margin .3s linear;
+    position: relative;
+    background: gainsboro;
+    height: 100%;
+  }
+  button {
+    width: $toogle-button-W-H;
+    height: $toogle-button-W-H;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: wheat;
+    border-radius: 50%;
+    position: absolute;
+    left: -$toogle-button-W-H/2;
+    z-index: 1;
+    top: 28px;
+  }
+}

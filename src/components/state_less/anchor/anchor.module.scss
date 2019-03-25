@@ -1,0 +1,18 @@
+@import "../../../assets/scss/variables/font_size.varible..scss";
+$color: white;
+
+
+.anchorTag {
+  button {
+    color: $color !important;
+    text-decoration: none !important;
+    background: gray;
+    padding: 10px 30px;
+    border-radius: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 5px;
+    border: 0;
+    font-size: $m;
+  }
+}
