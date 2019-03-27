@@ -10,7 +10,7 @@ $toogle-button-W-H: 35px;
 
   .leftPanel {
     position: absolute;
-    background: gray;
+    background: #f3f6fa;
     top: 0;
     left: 0;
     height: 100%;
@@ -19,8 +19,9 @@ $toogle-button-W-H: 35px;
   .rightPanel {
     transition: margin .3s linear;
     position: relative;
-    background: gainsboro;
+    background: white;
     height: 100%;
+    box-shadow: 0px 0px 70px #726f6f;
   }
   button {
     width: $toogle-button-W-H;

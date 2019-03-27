@@ -25,8 +25,8 @@ function Chat_Image({ userObjekt, imageSize }) {
   };
 
   return (
-    <div className={module_css.layout} style={ImageDivStyling}>
-      <img src={img} alt={name} />
+    <div className={module_css.layout} style={ImageDivStyling}  data-test="chat-image-component" >
+      <img src={img} alt={name} data-test="chat-image" />
     </div>
   );
 }

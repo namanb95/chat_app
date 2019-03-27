@@ -56,7 +56,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "generate-component": "chmod 700 ./custom-scripts/generate_component.sh && ./custom-scripts/generate_component.sh"
+    "coverage-report": "node scripts/test.js --coverage ",
+    "generate-component": "chmod 700 ./custom_scripts/generate_component.sh && ./custom_scripts/generate_component.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -72,6 +73,7 @@
     "enzyme-adapter-react-16": "^1.11.2",
     "jest": "^23.6.0",
     "jest-enzyme": "^7.0.2",
+    "jest-html-reporters": "^1.1.3",
     "node-sass": "^4.11.0"
   },
   "jest": {
@@ -117,6 +119,16 @@
     "watchPlugins": [
       "/home/naman/raweng/R&D/react_chat/node_modules/jest-watch-typeahead/filename.js",
       "/home/naman/raweng/R&D/react_chat/node_modules/jest-watch-typeahead/testname.js"
+    ],
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporters",
+        {
+          "publicPath": "./html-report",
+          "filename": "report.html"
+        }
+      ]
     ]
   },
   "babel": {
