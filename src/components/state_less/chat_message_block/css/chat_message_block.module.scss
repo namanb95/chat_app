@@ -1,0 +1,41 @@
+@import "../../../../assets/scss/variables/font_size.varible..scss";
+@import "../../../../assets/scss/variables/color.variable.scss";
+@import "../../../../assets/scss/mixins/vendor_prefixes.mixin.scss";
+
+.layout {
+  @include flex(row);
+
+  align-items: center;
+  padding: 5px;
+
+  .rightSec {
+    margin: 0 20px;
+  }
+  p{
+    margin: 0;
+    margin-bottom: 2px;
+  }
+}
+
+.timeWrapper {
+  font-size: $xs;
+  color: $userListMsg;
+  margin-top: 8px;
+}
+.textWrapper {
+  padding: 12px;
+}
+.selfMsg {
+  background: #d8e2e6;
+  color: $userListName;
+  border-radius: 10px 10px 10px 0px
+}
+.otherMsg {
+  background: #7fccf6;
+  color: white;
+  border-radius: 10px 10px 0 10px;
+}
+
+.fromOther {
+  flex-direction: row-reverse;
+}

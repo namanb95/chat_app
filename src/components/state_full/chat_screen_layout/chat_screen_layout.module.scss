@@ -4,7 +4,7 @@ $toogle-button-W-H: 35px;
 
 .screenLayout {
   height: 100%;
-  margin-left: 25px;
+  // margin-left: 25px;
   background: grey;
   position: relative;
 
@@ -19,11 +19,11 @@ $toogle-button-W-H: 35px;
   .rightPanel {
     transition: margin .3s linear;
     position: relative;
-    background: white;
+    background: #f5f7f8;
     height: 100%;
     box-shadow: 0px 0px 70px #726f6f;
   }
-  button {
+  .btn {
     width: $toogle-button-W-H;
     height: $toogle-button-W-H;
     display: flex;

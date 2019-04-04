@@ -1,0 +1,24 @@
+@import "../../../../assets/scss/mixins/vendor_prefixes.mixin.scss";
+
+.layout {
+  padding: 0 25px;
+  height: 100%;
+  @include flex(column);
+
+  .upperWrapper{
+    flex: 9;
+    @include flex(column);
+
+    .infoWrapper{
+      flex: 1;
+    }
+    .msgsWrapper{
+      flex: 9;
+      overflow: auto;
+      // offset-position:
+    }
+  }
+  .lowerWrapper{
+    flex: 1;
+  }
+}

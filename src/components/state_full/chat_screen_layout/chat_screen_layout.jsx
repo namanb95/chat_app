@@ -28,7 +28,9 @@ export default class Chat_Screen_Layout extends Component {
       <div
         className={screenLayout.screenLayout}
         data-test="component-chat-screen-layout"
+        style={{...this.props.style}}
       >
+      
         <div
           className={screenLayout.leftPanel}
           style={{ flex: this.state.leftBarFlex }}
@@ -42,13 +44,12 @@ export default class Chat_Screen_Layout extends Component {
           style={{ marginLeft: this.state.showLeftBar ? "300px" : 0 }}
           data-test="right-panel"
         >
-          <button data-test="toogle-button" onClick={() => this.toogleLeftBar()}>
+          <button data-test="toogle-button" className={screenLayout.btn} onClick={() => this.toogleLeftBar()}>
             <i
               className={`fas fa-${
                 this.state.showLeftBar ? "angle-left" : "address-book"
               }`}
             />
-            {/* <i class="fas fa-address-book"></i> */}
           </button>
           {this.props.rightChatSection}
         </div>

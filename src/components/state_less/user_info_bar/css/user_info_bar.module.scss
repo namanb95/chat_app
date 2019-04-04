@@ -1,0 +1,58 @@
+@import "../../../../assets/scss/variables/font_size.varible..scss";
+@import "../../../../assets/scss/variables/color.variable.scss";
+@import "../../../../assets/scss/mixins/vendor_prefixes.mixin.scss";
+
+
+.layout{
+  @include flex(row);
+  padding-bottom: 15px;
+  
+  .infoSection{
+    @include flex(column);
+    flex : 7;
+
+    .nameWrapper{
+      @include flex(row);
+      align-items: center;
+      color: $userListName;
+      font-size: $xl;
+      margin-bottom: 5px;
+
+      .name{
+        margin-right: 10px;
+      }
+
+      .online{
+        @include circle(10px,#1bc71b)
+      }
+      .offline{
+        @include circle(10px,red)
+      }
+    }
+    .textStatus{
+      color: $userListMsg;
+      font-size: $m
+    }
+  }
+
+  .actionSection{
+    @include flex(row);
+    flex: 3;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .btn{
+      color: $userListName;
+      border: 0px;
+      cursor: pointer;
+      font-size: $l;
+
+      @include circle(35px,transparent);
+      
+      &:focus{
+        outline: 0px;
+      }
+    }
+
+  }
+}

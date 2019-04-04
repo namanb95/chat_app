@@ -1,53 +1,12 @@
 import React, { Component, Suspense, lazy } from "react";
 import "./App.css";
 import Initial_Load from "./components/state_less/initial_load_screen";
-import { User_List_Card } from "./components/state_full/user_list_card/user_list_card";
-
-import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import store from "./redux/store";
+import SocketAdaptor from "./helpers/socket";
 
 const MainRoute = lazy(() => import("./routes/main.route"));
-
-const Anchor = lazy(() => import("./components/state_less/anchor/anchor"));
-// const Initial_Load = lazy(() =>
-//   import("./components/state_less/initial_load_screen")
-// );
-
-const userData = [
-  {
-    img: "",
-    name: "Ravikiran",
-    lastMsg: "hello naman"
-  },
-  {
-    img:
-      "https://uploads.latticehq.com/avatars/9695e6bd-5b11-4f36-880e-689b1e4a99e3/573fa730-4d3f-4563-930a-e98df403783b_dp.jpg?auto=compress&dpr=1&faceindex=1&facepad=2&mask=ellipse&cornerRadius&crop=faces&fit=facearea&w=200&h=200",
-    name: "Aman",
-    lastMsg: "how are you ?"
-  },
-  {
-    img:
-      "https://uploads.latticehq.com/avatars/9695e6bd-5b11-4f36-880e-689b1e4a99e3/573fa730-4d3f-4563-930a-e98df403783b_dp.jpg?auto=compress&dpr=1&faceindex=1&facepad=2&mask=ellipse&cornerRadius&crop=faces&fit=facearea&w=200&h=200",
-    name: "Alatamash",
-    lastMsg: ""
-  },
-  {
-    img:
-      "https://uploads.latticehq.com/avatars/9695e6bd-5b11-4f36-880e-689b1e4a99e3/573fa730-4d3f-4563-930a-e98df403783b_dp.jpg?auto=compress&dpr=1&faceindex=1&facepad=2&mask=ellipse&cornerRadius&crop=faces&fit=facearea&w=200&h=200",
-    name: "Abhijeet",
-    lastMsg: ""
-  },
-  {
-    img:
-      "https://uploads.latticehq.com/avatars/9695e6bd-5b11-4f36-880e-689b1e4a99e3/573fa730-4d3f-4563-930a-e98df403783b_dp.jpg?auto=compress&dpr=1&faceindex=1&facepad=2&mask=ellipse&cornerRadius&crop=faces&fit=facearea&w=200&h=200",
-    name: "Clive",
-    lastMsg: ""
-  },
-  {
-    img: "",
-    name: "Naman",
-    lastMsg: ""
-  }
-];
 
 class App extends Component {
   constructor() {
@@ -57,12 +16,10 @@ class App extends Component {
     };
   }
 
-  loadComponent = () => {
-    this.ChatScreenLayout = lazy(() =>
-      import("./components/state_full/chat_screen_layout")
-    );
-    this.setState({ show: !this.state.show });
-  };
+  componentDidMount(){
+    new SocketAdaptor("http://127.0.0.1:9000").emit("create_private_room",{name : "naman", email : "naman.bhardwaj@gmail.com"})
+
+  }
 
   render() {
     return (
@@ -70,24 +27,16 @@ class App extends Component {
         fallback={
           <Initial_Load
             progressLoaderColor="white"
-            bgColor="black"
+            bgColor="white"
             logo_URL="https://www.raweng.com/assets/blt0160a81427260b9a/raweng-logo.svg"
           />
         }
       >
-        {/* {this.state.show && (
-          <this.ChatScreenLayout
-            leftBar={
-              userData.map((d,i) => <User_List_Card key={i} userData={d} />)
-            }
-            rightChatSection={<div>hello right</div>}
-          />
-        )}
-        <button onClick={this.loadComponent}>load</button> */}
-
-        <Router>
-          <MainRoute />
-        </Router>
+        <Provider store={store}>
+          <Router>
+            <MainRoute {...this.props} />
+          </Router>
+        </Provider>
       </Suspense>
     );
   }

@@ -1,0 +1,20 @@
+/*
+ * QUILL
+ */
+
+@import "./variables/font_size.varible..scss";
+
+[class*="chat_textarea_layout__"] {
+  .ql-editor {
+    padding:0;
+
+    &::before {
+      font-style: italic !important;
+      font-size: $m !important;
+    }
+
+    p {
+      font-size: $m !important;
+    }
+  }
+}

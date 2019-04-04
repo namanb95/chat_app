@@ -1,0 +1,22 @@
+@import "../../../../assets/scss/mixins/vendor_prefixes.mixin.scss";
+@import "../../../../assets/scss/variables/font_size.varible..scss";
+
+
+.layout{
+  display: flex;
+  margin: 7px 5px;
+  input{
+    border-radius: 15px;
+    border: none;
+    font-size: $m;
+    padding: 10px;
+    outline: none;
+    width: 100%;
+    font-family: ubuntu;
+
+  &::placeholder{
+      font-style: italic
+    }
+  }
+}
+

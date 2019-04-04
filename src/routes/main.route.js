@@ -1,47 +1,11 @@
 import React, { lazy } from "react";
 import { Route, Switch } from "react-router-dom";
-import Chat_Screen_Layout from "../components/state_full/chat_screen_layout";
-import User_List_Card from "../components/state_full/user_list_card/user_list_card";
+import Login from "../pages/main/login/login";
+// import Dashboard from "../pages/main/dashboard/dashboard";
+// import Signup from "../pages/main/signup";
 
-const Signup = lazy(() => import("../pages/signup"));
-const userData = [
-  {
-    img:
-      "https://uploads.latticehq.com/avatars/9695e6bd-5b11-4f36-880e-689b1e4a99e3/573fa730-4d3f-4563-930a-e98df403783b_dp.jpg?auto=compress&dpr=1&faceindex=1&facepad=2&mask=ellipse&cornerRadius&crop=faces&fit=facearea&w=200&h=200",
-    name: "Ravikiran",
-    lastMsg: "hello naman"
-  },
-  {
-    img:
-      "https://uploads.latticehq.com/avatars/9695e6bd-5b11-4f36-880e-689b1e4a99e3/573fa730-4d3f-4563-930a-e98df403783b_dp.jpg?auto=compress&dpr=1&faceindex=1&facepad=2&mask=ellipse&cornerRadius&crop=faces&fit=facearea&w=200&h=200",
-    name: "Aman",
-    lastMsg: "how are you ?"
-  },
-  {
-    img:
-      "https://uploads.latticehq.com/avatars/9695e6bd-5b11-4f36-880e-689b1e4a99e3/573fa730-4d3f-4563-930a-e98df403783b_dp.jpg?auto=compress&dpr=1&faceindex=1&facepad=2&mask=ellipse&cornerRadius&crop=faces&fit=facearea&w=200&h=200",
-    name: "Alatamash",
-    lastMsg: ""
-  },
-  {
-    img:
-      "https://uploads.latticehq.com/avatars/9695e6bd-5b11-4f36-880e-689b1e4a99e3/573fa730-4d3f-4563-930a-e98df403783b_dp.jpg?auto=compress&dpr=1&faceindex=1&facepad=2&mask=ellipse&cornerRadius&crop=faces&fit=facearea&w=200&h=200",
-    name: "Abhijeet",
-    lastMsg: ""
-  },
-  {
-    img:
-      "https://uploads.latticehq.com/avatars/9695e6bd-5b11-4f36-880e-689b1e4a99e3/573fa730-4d3f-4563-930a-e98df403783b_dp.jpg?auto=compress&dpr=1&faceindex=1&facepad=2&mask=ellipse&cornerRadius&crop=faces&fit=facearea&w=200&h=200",
-    name: "Clive",
-    lastMsg: ""
-  },
-  {
-    img:
-      "https://uploads.latticehq.com/avatars/9695e6bd-5b11-4f36-880e-689b1e4a99e3/573fa730-4d3f-4563-930a-e98df403783b_dp.jpg?auto=compress&dpr=1&faceindex=1&facepad=2&mask=ellipse&cornerRadius&crop=faces&fit=facearea&w=200&h=200",
-    name: "Naman",
-    lastMsg: ""
-  }
-];
+const Signup = lazy(() => import("../pages/main/signup"));
+const Dashboard = lazy(() => import("../pages/main/dashboard/"));
 
 const routeTable = [
   {
@@ -56,16 +20,14 @@ const routeTable = [
     component: Signup
   },
   {
-    path: "/dashboard",
+    path: "/login",
     extact: true,
-    render: () => (
-      <Chat_Screen_Layout
-        leftBar={userData.map((d, i) => (
-          <User_List_Card key={i} userData={d} />
-        ))}
-        rightChatSection={<div>hello right</div>}
-      />
-    )
+    component: Login
+  },
+  {
+    path: "/dashboard",
+    extact: false,
+    component : Dashboard
   },
   {
     path: "**",
@@ -73,7 +35,7 @@ const routeTable = [
   }
 ];
 
-export default function MainRoute() {
+export default function MainRoute(props) {
   let dynamicRoutes = routeTable.map((route, i) => (
     <Route
       key={i}
@@ -83,8 +45,6 @@ export default function MainRoute() {
       render={route.render}
     />
   ));
-
-  console.log(dynamicRoutes);
 
   return (
     <React.Fragment>

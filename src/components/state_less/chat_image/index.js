@@ -1,3 +1,3 @@
-import chat_image from "./chat_image";
+import Chat_Image from "./chat_image";
 
-export default chat_image
+export default Chat_Image

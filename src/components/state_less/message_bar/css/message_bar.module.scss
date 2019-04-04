@@ -1,0 +1,33 @@
+@import "../../../../assets//scss/mixins/vendor_prefixes.mixin.scss";
+@import "../../../../assets//scss/variables/font_size.varible..scss";
+@import "../../../../assets//scss/variables/color.variable.scss";
+// @import "../../../../assets/scss/overrides.scss";
+
+.layout{
+  @include flex(row);
+  background: #b1b1b126;
+  border-radius: 15px;
+  margin: 10px;
+  
+  // @include quill;
+
+  .textAreaWrapper{
+    flex: 9.3;
+    padding: 15px;
+    color: $userListName;
+  }
+  .actionWrapper{
+    flex: 0.7;
+    @include flex(column);
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 6px;
+
+    button{      
+      cursor: pointer;
+      font-size: $m;
+      outline: none;
+      @include circle(40px,#ffffff8c);
+    }
+  }
+}

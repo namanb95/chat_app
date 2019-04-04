@@ -1,0 +1,31 @@
+@import "../../../../assets/scss/mixins/vendor_prefixes.mixin.scss";
+
+.layout {
+  @include flex(column);
+  height: 100%;
+  width: 70px;
+  background: #434f5f;
+  color: white;
+  align-items: center;
+
+  .userImage {
+    flex: 2;
+    @include flex(row);
+    justify-content: center;
+    align-items: center;
+  }
+  .menuOptions {
+    flex: 6;
+    @include flex(column);
+    justify-content: space-evenly;
+    align-items: center;
+
+  }
+  .settings {
+    flex: 2;
+
+    @include flex(row);
+    justify-content: center;
+    align-items: center;
+  }
+}
