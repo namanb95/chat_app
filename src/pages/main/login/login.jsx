@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
 import { login } from "../../../redux/action/_user/user.action";
+import logo from "../../../assets/images/raweng-logo.svg"
 
 const Card        = lazy(() => import("../../../components/state_less/card"));
 const Chat_Input  = lazy(() => import("../../../components/state_less/chat_input"));
@@ -36,8 +37,7 @@ function Login({ login, history }) {
             circular={false}
             imageSquareSize="70%"
             imageData={{
-              img:
-                "https://www.raweng.com/assets/blt0160a81427260b9a/raweng-logo.svg",
+              img: logo,
               alt: "logo"
             }}
           />

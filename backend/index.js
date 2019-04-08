@@ -3,8 +3,10 @@ const HttpServer = require("./lib/http");
 
 new HttpServer(8000)
   .applyBodyParserMiddleware()
-  .applyCorsMiddleware()
-  .addRoute("/auth", require("./httpServer/routes/auth"))
+	.applyCorsMiddleware()
+	.attachChalkToReq()
+	.connectDatabase("react_test")
+  .addRoute("/auth", require("./servers/httpServer/routes/auth"))
   .startServer()
   .then(d => console.log(`Http Server Listening @Port ${d}`))
   .catch(err => console.log(err));

@@ -9,8 +9,6 @@ const login_user_service = data => {
     data
   );
 
-  return Promise.resolve();
-
   return httpCall
     .setHeaders()
     .setPath()

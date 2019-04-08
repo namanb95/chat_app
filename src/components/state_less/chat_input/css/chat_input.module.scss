@@ -4,9 +4,9 @@
 
 .layout{
   display: flex;
-  margin: 7px 5px;
+  margin: 8px 5px;
   input{
-    border-radius: 15px;
+    border-radius: 5px;
     border: none;
     font-size: $m;
     padding: 10px;
@@ -15,7 +15,8 @@
     font-family: ubuntu;
 
   &::placeholder{
-      font-style: italic
+			font-style: italic;
+			font-size: $s
     }
   }
 }

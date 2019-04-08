@@ -1,14 +1,8 @@
 import { LOGIN_USER } from "../action_types/index.types";
 
 const initialState = {
-  isLoggedIn: false,
-  loggedInUser: {
-    name: "Aman Jain",
-    img: "",
-    textStatus: "Hello !!",
-    status: true,
-    id: ""
-  }
+  isLoggedIn  : false,
+  loggedInUser: {}
 };
 
 export default (state = initialState, action) => {

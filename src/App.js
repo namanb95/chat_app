@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    new SocketAdaptor("http://127.0.0.1:9000").emit("create_private_room",{name : "naman", email : "naman.bhardwaj@gmail.com"})
+    // new SocketAdaptor("http://127.0.0.1:9000").emit("create_private_room",{name : "naman", email : "naman.bhardwaj@gmail.com"})
 
   }
 

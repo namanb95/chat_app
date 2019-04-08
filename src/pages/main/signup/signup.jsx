@@ -1,6 +1,7 @@
 import module_css from "./css/signup.module.scss";
 import js_css from "./css/signup.css.js";
 import React, { Component, lazy, useState } from "react";
+import logo from "../../../assets/images/raweng-logo.svg"
 
 const Card        = lazy(() => import("../../../components/state_less/card"));
 const Chat_Image  = lazy(() => import("../../../components/state_less/chat_image"));
@@ -31,55 +32,59 @@ export default function Signup() {
             circular={false}
             imageSquareSize="70%"
             imageData={{
-              img:
-                "https://www.raweng.com/assets/blt0160a81427260b9a/raweng-logo.svg",
+              img: logo,
               alt: "logo"
             }}
           />
         </div>
         <form className={module_css.formLayout} onSubmit={submitForm}>
-          <div className={module_css.inputBlock}>
-            <Chat_Input
-              name="name"
-              onChange={handleChange}
-              placeholder="Name"
-              type="text"
-              value={data.name}
-            />
-            <Chat_Input
-              name="email"
-              onChange={handleChange}
-              placeholder="Email"
-              type="text"
-              value={data.email}
-            />
-            <Chat_Input
-              name="password"
-              onChange={handleChange}
-              placeholder="Password"
-              type="password"
-              value={data.password}
-            />
-          </div>
+          <div className={module_css.fromControl}>
+						<div className={module_css.inputBlock}>
+							<Chat_Input
+								name="name"
+								onChange={handleChange}
+								placeholder="Name"
+								type="text"
+								value={data.name}
+								inputStyle = {js_css.inputStyle}
+							/>
+							<Chat_Input
+								name="email"
+								onChange={handleChange}
+								placeholder="Email"
+								type="text"
+								value={data.email}
+								inputStyle = {js_css.inputStyle}
+							/>
+							<Chat_Input
+								name="password"
+								onChange={handleChange}
+								placeholder="Password"
+								type="password"
+								value={data.password}
+								inputStyle = {js_css.inputStyle}
+							/>
+						</div>
 
-          <div className={module_css.formBtn}>
-            <Chat_Button
-              action="submit"
-              value="Signup"
-              name="signup"
-              btnType="primary"
-            />
-          </div>
-          <div className={module_css.loginBtn}>
-            Alreday Signed-up ?
-            <Chat_Button
-              action="link"
-              value="Login"
-              name="signup"
-              btnType="default"
-              path="/login"
-            />
-          </div>
+						<div className={module_css.formBtn}>
+							<Chat_Button
+								action="submit"
+								value="Signup"
+								name="signup"
+								btnType="primary"
+							/>
+						</div>
+					</div>
+					<div className={module_css.loginBtn}>
+						Already Signed-up ? &nbsp;
+						<Chat_Button
+							action="link"
+							value="Login"
+							name="signup"
+							btnType="default"
+							path="/login"
+						/>
+					</div>
         </form>
       </Card>
     </div>

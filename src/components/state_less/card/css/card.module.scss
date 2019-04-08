@@ -1,11 +1,12 @@
 @import "../../../../assets/scss/variables/font_size.varible..scss";
 @import "../../../../assets/scss/mixins/vendor_prefixes.mixin.scss";
 
-.layout{
-  background:  white;
+.layout {
+  background: white;
   @include flex(column);
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 5px;
   box-shadow: 1px 6px 20px #000000f2;
+  padding: 20px 0;
 }

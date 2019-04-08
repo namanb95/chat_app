@@ -23,13 +23,13 @@ export default class HttpAdaptor {
   }
 
   setHeaders() {
+    let tmp = { "Content-Type": "application/json" };
     if (this._headers) {
-      let tmp = {};
       for (let head in this._headers) {
         tmp[head] = this._headers[head];
       }
-      this.requestMeta.headers = new Headers(tmp);
-    } else delete this.requestMeta.headers;
+    }
+    this.requestMeta.headers = new Headers(tmp);
 
     return this;
   }
@@ -48,6 +48,15 @@ export default class HttpAdaptor {
   }
 
   makeCall() {
-    return fetch(this.url, this.requestMeta).then(res => res.json());
+    return fetch(this.url, this.requestMeta)
+      .then(res => {
+        if (res.status >= 400) {
+          return res.json().then(err => {
+            throw err;
+          });
+        }
+        return res.json();
+      })
+      .then(re => re)
   }
 }

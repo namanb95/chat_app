@@ -1,22 +1,31 @@
 @import "../../../../assets/scss/mixins/vendor_prefixes.mixin.scss";
 @import "../../../../assets/scss/variables/color.variable.scss";
 
-.layout{
-	@include flex(row);
-	background: $login_signup_bg;
-	height: 100%;
-	justify-content: center;
-	align-items: center;
-	
-	.logoBlock{
-		width: 50%;
-		text-align: center
-	}
-	.formLayout{
-		flex: 1;
-		width: 100%;
-		.inputBlock{
-			
-		}
-	}
+.layout {
+  @include flex(row);
+  background: $login_signup_bg;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .logoBlock {
+    @include flex(row);
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+  }
+  .formLayout {
+    flex: 1;
+    width: 100%;
+    .fromControl {
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .loginBtn {
+      @include flex(row);
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 20px;
+    }
+  }
 }
