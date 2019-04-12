@@ -5,15 +5,21 @@ import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
 import { login } from "../../../redux/action/_user/user.action";
-import logo from "../../../assets/images/raweng-logo.svg"
+import logo from "../../../assets/images/raweng-logo.svg";
 
-const Card        = lazy(() => import("../../../components/state_less/card"));
-const Chat_Input  = lazy(() => import("../../../components/state_less/chat_input"));
-const Chat_Image  = lazy(() => import("../../../components/state_less/chat_image"));
-const Chat_Button = lazy(() => import("../../../components/state_less/chat_button"));
+const Card = lazy(() => import("../../../components/state_less/card"));
+const Chat_Input = lazy(() =>
+  import("../../../components/state_less/chat_input")
+);
+const Chat_Image = lazy(() =>
+  import("../../../components/state_less/chat_image")
+);
+const Chat_Button = lazy(() =>
+  import("../../../components/state_less/chat_button")
+);
 
 function Login({ login, history }) {
-  const [data, setUserData] = useState({ username: "", password: "" });
+  const [data, setUserData] = useState({ email: "", password: "" });
 
   const handleChange = e => {
     setUserData({
@@ -45,12 +51,13 @@ function Login({ login, history }) {
         <div className={module_css.input}>
           <form onSubmit={submitLogin}>
             <Chat_Input
+						  
               inputStyle={{ background: "#e4e4e4" }}
-              value={data.username}
-              placeholder="Email / Username"
+              value={data.email}
+              placeholder="Email"
               onChange={handleChange}
-              type="text"
-              name="username"
+              type="email"
+              name="email"
             />
             <Chat_Input
               inputStyle={{ background: "#e4e4e4" }}

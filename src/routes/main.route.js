@@ -1,54 +1,73 @@
 import React, { lazy } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Login from "../pages/main/login/login";
 // import Dashboard from "../pages/main/dashboard/dashboard";
 // import Signup from "../pages/main/signup";
+
+import { connect } from "react-redux";
 
 const Signup = lazy(() => import("../pages/main/signup"));
 const Dashboard = lazy(() => import("../pages/main/dashboard/"));
 
 const routeTable = [
   {
-    path: "/",
-    extact: true,
-    render: () => <div>hy this home Page</div>,
-    private: true
-  },
-  {
     path: "/signup",
-    extact: true,
     component: Signup
   },
   {
     path: "/login",
-    extact: true,
     component: Login
   },
   {
     path: "/dashboard",
-    extact: false,
-    component : Dashboard
-  },
-  {
-    path: "**",
-    render: () => <div>No page found</div>
+    component: Dashboard
   }
 ];
 
-export default function MainRoute(props) {
-  let dynamicRoutes = routeTable.map((route, i) => (
-    <Route
-      key={i}
-      path={route.path}
-      exact={route.extact}
-      component={route.component}
-      render={route.render}
-    />
-  ));
+const notFound = {
+  path: "**",
+  render: () => <div>No page found</div>
+};
 
+function MainRoute({ mainRouteState, match }) {
+  let dashboardRoutes = mainRouteState;
+  let newRoute = [];
+
+  dashboardRoutes.map(r => {
+    let mainRoute = routeTable.find(rt => rt.path === r.path);
+    newRoute.push(Object.assign({}, mainRoute, r));
+  });
+
+  newRoute.push(notFound);
+
+  let dynamicRoutes = newRoute.map((route, i) => {
+    if (route.private) {
+      return <Redirect key={i} from={route.path} to={route.redirectTo} />;
+    } else
+      return (
+        <Route
+          key={i}
+          path={`${route.path}`}
+          exact={route.exact}
+          component={route.component}
+          render={route.render}
+        />
+      );
+  });
   return (
     <React.Fragment>
       <Switch>{dynamicRoutes}</Switch>
     </React.Fragment>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    mainRouteState: state.router.main
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(MainRoute);

@@ -13,7 +13,6 @@ function User_Info_Bar({
   textStatus,
   availabilityStatus = false
 }) {
-  console.log("infobar rendered !")
   return (
     <div data-test="user-info-bar-component" className={module_css.layout}>
       <div className={module_css.infoSection} data-test="info-section">

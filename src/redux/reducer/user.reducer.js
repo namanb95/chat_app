@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
     case LOGIN_USER: {
       let currentUser = {
         ...state.loggedInUser,
-        ...action.payload
+				...action.payload,
       };
       return {
         isLoggedIn: true,

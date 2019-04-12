@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import store from "./redux/store";
 import SocketAdaptor from "./helpers/socket";
+import Entry from "./entry";
 
 const MainRoute = lazy(() => import("./routes/main.route"));
 
@@ -33,9 +34,7 @@ class App extends Component {
         }
       >
         <Provider store={store}>
-          <Router>
-            <MainRoute {...this.props} />
-          </Router>
+          <Entry />
         </Provider>
       </Suspense>
     );

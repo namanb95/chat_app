@@ -36,6 +36,7 @@ export default class HttpAdaptor {
 
   setPayload() {
     if (this._payload) {
+			for(var data in this._payload)
       this.requestMeta.body = JSON.stringify(this._payload);
     } else delete this.requestMeta.body;
 

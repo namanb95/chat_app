@@ -1,23 +1,28 @@
 @import "../../../../assets/scss/mixins/vendor_prefixes.mixin.scss";
 @import "../../../../assets/scss/variables/font_size.varible..scss";
 
+.layout {
+  @include flex(column);
+	margin: 8px 5px;
+	label{
+		margin: 5px 0;
+		font-size: $s;
+	}
+  .inputWrapper {
+    @include flex(row);
+    input {
+      border-radius: 5px;
+      border: none;
+      font-size: $m;
+      padding: 10px;
+      outline: none;
+      width: 100%;
+      font-family: ubuntu;
 
-.layout{
-  display: flex;
-  margin: 8px 5px;
-  input{
-    border-radius: 5px;
-    border: none;
-    font-size: $m;
-    padding: 10px;
-    outline: none;
-    width: 100%;
-    font-family: ubuntu;
-
-  &::placeholder{
-			font-style: italic;
-			font-size: $s
+      &::placeholder {
+        font-style: italic;
+        font-size: $s;
+      }
     }
   }
 }
-

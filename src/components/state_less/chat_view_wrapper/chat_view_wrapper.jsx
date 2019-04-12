@@ -9,7 +9,7 @@ import Message_Bar from "../message_bar";
 import Conversation_Block from "../../state_full/conversation_block";
 
 function Chat_View_Wrapper(props) {
-  // console.log(userData[0])
+  console.log("right block rerendered")
   return (
     <div className={module_css.layout}>
       <div className={module_css.upperWrapper}>

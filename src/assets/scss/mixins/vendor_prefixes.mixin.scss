@@ -1,20 +1,20 @@
-@mixin flex($direction : "row") {
+@mixin flex($direction: "row") {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  
+
   @if $direction == "row" {
-    -webkit-box-orient: horizontal;    
-  }@else{
-    -webkit-box-orient: vertical;    
+    -webkit-box-orient: horizontal;
+  } @else {
+    -webkit-box-orient: vertical;
   }
 
   -webkit-box-direction: normal;
-    -ms-flex-direction: $direction;
-        flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
 }
 
-@mixin circle ($size,$color){
+@mixin circle($size, $color) {
   @include flex(row);
   justify-content: center;
   align-items: center;
@@ -23,5 +23,23 @@
   border-radius: 50%;
   background-color: $color;
   border: 0;
+}
 
+@mixin scrollBarStyle( $barWidth: 6px, $trackerColor: grey, $scrollBarBg: #848484 ) {
+	&::-webkit-scrollbar {
+    width: $barWidth;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px $trackerColor;
+            box-shadow: inset 0 0 5px $trackerColor;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $scrollBarBg;
+    border-radius: 10px;
+  }
 }

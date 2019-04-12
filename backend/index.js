@@ -7,6 +7,7 @@ new HttpServer(8000)
 	.attachChalkToReq()
 	.connectDatabase("react_test")
   .addRoute("/auth", require("./servers/httpServer/routes/auth"))
+  .addRoute("/user", require("./servers/httpServer/routes/users"))
   .startServer()
   .then(d => console.log(`Http Server Listening @Port ${d}`))
   .catch(err => console.log(err));

@@ -1,0 +1,22 @@
+@import "../../../../assets/scss/variables/color.variable.scss";
+@import "../../../../assets/scss/mixins/vendor_prefixes.mixin.scss";
+
+.layout{
+	@include flex(row);
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+
+	.imgWrapper{
+		margin-right: -45px;
+	 box-shadow: 0 0 10px ;
+	 z-index: 1;
+	};
+	.formWrapper{
+		min-width: 60%;
+		min-height: 70%;
+		background: #434f5f; 
+		border-radius: 4px;
+	}
+}

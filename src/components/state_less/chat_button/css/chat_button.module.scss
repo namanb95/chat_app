@@ -1,5 +1,6 @@
 @import "../../../../assets/scss/variables/color.variable.scss";
 @import "../../../../assets/scss/variables/font_size.varible..scss";
+@import "../../../../assets/scss/mixins/vendor_prefixes.mixin.scss";
 
 .layout {
   button {
@@ -11,16 +12,28 @@
     font-family: ubuntu;
     cursor: pointer;
     border-radius: 3px;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
   }
-  :focus{
+
+  .square {
+    @include flex(row);
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+  }
+  :focus {
     outline: none !important;
   }
-  .primary{
+  .primary {
     border: 1px solid $buttonColor;
     background: $buttonColor;
     color: $white;
   }
-  .default{
+  .default {
     border: 1px solid $buttonColor;
     background: $white;
     color: $buttonColor;

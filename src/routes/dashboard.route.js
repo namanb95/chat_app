@@ -1,70 +1,59 @@
 import React from "react";
-import { Route, Switch,Link } from "react-router-dom";
+import { Route, Switch, Redirect , Link} from "react-router-dom";
 import Chat_Screen from "../pages/dashboard/chat_screen/chat_screen";
 import { connect } from "react-redux";
+import Profile from "../pages/dashboard/profile";
 
 const routeTable = [
   {
-    path: "/",
-    extact: true,
+		
+    path: "/chat",
     component: Chat_Screen,
-    private: true
-  },
-  {
-    path: "/test",
-    extact: true,
-    render: () => <div>Test Page in dashboard</div>,
-    private: true
-  },
-  {
-    path: "/new-test",
-    extact: true,
-    render: () => <div>new test Page in dashboard</div>,
-    private: true
+	},
+	{
+    path: "/profile",
+    component: Profile,
   }
 ];
 
-const notFound = {
-  path: "**",
-  render: () => <div>No page found</div>
-};
 
-function DashboardRoute({ routeState, match }) {
+function DashboardRoute({ dashboardRouteState, match }) {
+  let dashboardRoutes = dashboardRouteState;
+  let newRoute = [];
 
-  let dashboardRoutes = routeState;
-  let newRoute        = [];
+  dashboardRoutes.map(r => {
+    let dashboardRoute = routeTable.find(rt => rt.path === r.path);
+    newRoute.push(Object.assign({}, dashboardRoute, r));
+  });
 
-  dashboardRoutes.map(r=>{
-    let mainroute = routeTable.find(rt => rt.path === r.path);
-    newRoute.push(Object.assign({},mainroute,r))
-  })
-
-  newRoute.push(notFound);
-
-
+  // newRoute.push(notFound);
   let dynamicRoutes = newRoute.map((route, i) => {
-    return (
-      <Route
-        key={i}
-        path={`${match.path}${route.path}`}
-        exact={route.extact}
-        component={route.component}
-        render={route.render}
-      />
-    );
+		debugger
+    if (route.private) {
+      return <Redirect key={i} from={`${match.path}${route.path}`} to={route.redirectTo} />;
+    } else
+      return (
+        <Route
+          key={i}
+          path={`${match.path}${route.path}`}
+          exact={route.exact}
+          component={route.component}
+          render={route.render}
+        />
+      );
   });
 
   return (
     <React.Fragment>
-      <Link to={`${match.path}/new-test`}>Test New Link</Link>
-      <Switch>{dynamicRoutes}</Switch>
+			<Link to={`${match.path}/profile`} >test</Link>
+      {dynamicRoutes}
     </React.Fragment>
   );
 }
 
 const mapStateToProps = state => {
   return {
-    routeState: state.router
+    dashboardRouteState: state.router.dashboard
   };
 };
 

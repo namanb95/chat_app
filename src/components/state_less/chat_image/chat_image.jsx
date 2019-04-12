@@ -16,9 +16,7 @@ const imageSizes = {
 };
 
 function Chat_Image({ imageData, imageSize,imageSquareSize,circular = true }) {
-  let { img, name, alt } = imageData;
-
-  
+  let { img , avatar, name, alt } = imageData;
 
   const ImageDivStyling = {
     height: imageSizes[imageSize] || imageSquareSize,
@@ -33,7 +31,7 @@ function Chat_Image({ imageData, imageSize,imageSquareSize,circular = true }) {
       data-test="chat-image-component"
     >
       <img
-        src       = {img}
+        src       = {img || avatar}
         title     = {name || alt}
         alt       = {name || alt}
         data-test = "chat-image"

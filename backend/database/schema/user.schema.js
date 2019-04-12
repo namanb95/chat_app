@@ -20,8 +20,8 @@ const user = new mongoose.Schema({
     required: [true, "Password is required field"]
   },
   avatar: {
-    type: String,
-    required: [true, "Avatar is required field"]
+		type: String,
+		default : "https://d1qb2nb5cznatu.cloudfront.net/users/5312378-large?1483646242"
   },
   create_date: {
     type: Date,

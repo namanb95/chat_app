@@ -15,7 +15,7 @@ class Utility {
   errorResponseGenerator(err, status = 400) {
     return this._res.status(status).json({
       success: false,
-      data
+      err
     });
   }
 }

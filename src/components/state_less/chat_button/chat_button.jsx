@@ -11,23 +11,30 @@ function Chat_Button({
   btnType,
   action,
   handleOnClick,
-  path = "/"
+  path = "/",
+  btnStyle,
+  square,
+  title,
+  disabled = false
 }) {
   let btnWrapper = (
     <button
-      onClick={ handleOnClick }
-      className={ module_css[btnType] }
-      name={ name }
-      value={ value }
-      type={ action }
+      onClick   = {handleOnClick}
+      className = {`${module_css[btnType]} ${square ? module_css.square: ""}`}
+      name      = {name}
+      value     = {value}
+      type      = {action}
+      style     = {{ ...btnStyle }}
+      title     = {title}
+      disabled  = {disabled}
     >
       {value}
     </button>
   );
   if (action === "link") {
-    btnWrapper = <Link to={ path }>{btnWrapper}</Link>;
+    btnWrapper = <Link to={path}>{btnWrapper}</Link>;
   }
-  return <div className={ module_css.layout }>{btnWrapper}</div>;
+  return <div className={module_css.layout}>{btnWrapper}</div>;
 }
 
 Chat_Button.propTypes = {

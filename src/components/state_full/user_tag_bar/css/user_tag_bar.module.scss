@@ -1,0 +1,29 @@
+@import "../../../../assets/scss/mixins/vendor_prefixes.mixin.scss";
+@import "../../../../assets/scss/variables/color.variable.scss";
+@import "../../../../assets/scss/variables/font_size.varible..scss";
+
+.barLayout {
+  @include flex(row);
+	align-items: center;
+	flex-wrap: wrap;
+}
+.tagLayout {
+	@include flex(row);
+  background: $userListName;
+  align-items: center;
+  height: 30px;
+	border-radius: 50px;
+	color: $white;
+	padding: 0 8px;
+	margin: 5px;
+	cursor: pointer;
+
+	.nameWrapper{
+		font-size: $s;
+		margin-left: 5px;
+	}
+}
+
+.selectedTag {
+	background: $blue;
+}
